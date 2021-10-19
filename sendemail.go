@@ -6,6 +6,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 
 	//go get -u github.com/aws/aws-sdk-go
 	"github.com/aws/aws-sdk-go/aws"
@@ -42,12 +43,20 @@ const (
 	CharSet = "UTF-8"
 )
 
+func init() {
+	//https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html
+	//the configuration settings should be read from the config file
+	os.Setenv("AWS_SDK_LOAD_CONFIG", "true")
+}
+
 func main() {
 	// Create a new session in the us-west-2 region.
 	// Replace us-west-2 with the AWS Region you're using for Amazon SES.
-	sess, err := session.NewSession(&aws.Config{
-		Region: aws.String("us-west-2")},
-	)
+	//sess, err := session.NewSession(&aws.Config{
+	//	Region: aws.String("us-west-2")},
+	//)
+
+	sess, err := session.NewSession()
 
 	// Create an SES session.
 	svc := ses.New(sess)
