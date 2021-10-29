@@ -24,7 +24,7 @@ func main() {
 		fmt.Println(err)
 	}
 
-	fmt.Println(sess.Config.Credentials)
+	fmt.Println("sess.Config.Credentials:", sess.Config.Credentials)
 
 	// Create SES service client
 	svc := ses.New(sess)

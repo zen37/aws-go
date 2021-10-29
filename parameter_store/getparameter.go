@@ -44,9 +44,12 @@ func main() {
 	}
 
 	sess := session.Must(session.NewSession())
+	//sess, err := session.NewSession()
 
 	svc := ssm.New(sess)
+	//svc := ses.New(sess)
 
+	//parameterName = "/dev/email"
 	results, err := GetParameter(svc, parameterName)
 	if err != nil {
 		fmt.Println(err.Error())
