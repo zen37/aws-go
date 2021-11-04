@@ -39,6 +39,7 @@ func main() {
 	fmt.Println("Functions:")
 
 	for _, f := range result.Functions {
+	
 		fmt.Println("Name:        " + aws.StringValue(f.FunctionName))
 		fmt.Println("Description: " + aws.StringValue(f.Description))
 		fmt.Println("")

@@ -94,7 +94,6 @@ func main() {
 	// Attempt to send the email.
 	result, err := svc.SendEmail(input)
 
-	//err = errors.New("made up error")
 
 	// Display error messages if they occur.
 	if err != nil {

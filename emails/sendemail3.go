@@ -95,13 +95,13 @@ func buildEmail(r events.APIGatewayProxyRequest) (*ses.SendEmailInput, error) {
 //email used for sender
 func getSender() string {
 	//TO DO obtain address from the parameter store
-	return "hello@collaction.org"
+	return "....."
 }
 
 //email used for recipient
 func getRecipient() string {
 	//TO DO obtain address from the parameter store
-	return "hello@collaction.org"
+	return "...."
 }
 
 func main() {

@@ -49,7 +49,7 @@ func main() {
 	svc := ssm.New(sess)
 	//svc := ses.New(sess)
 
-	//parameterName = "/dev/email"
+	//parameterName = "/collaction/dev/email"
 	results, err := GetParameter(svc, parameterName)
 	if err != nil {
 		fmt.Println(err.Error())

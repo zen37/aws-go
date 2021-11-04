@@ -5,8 +5,8 @@ package main
 
 import (
 	"errors"
+	"fmt"
 	"testing"
-	"time"
 
 	"github.com/aws/aws-sdk-go/service/ssm"
 	"github.com/aws/aws-sdk-go/service/ssm/ssmiface"
@@ -23,22 +23,21 @@ func (m *mockSSMClient) GetParameter(input *ssm.GetParameterInput) (*ssm.GetPara
 	if input.Name == nil || *input.Name == "" {
 		return nil, errors.New("GetParameterInput.Name is nil of an empty string")
 	}
-	value := "test-valueY"
+	value := "hello@collaction.org"
 	resp := ssm.GetParameterOutput{
 		Parameter: &ssm.Parameter{
 			Value: &value,
 		},
 	}
+	fmt.Println("*resp.Parameter.Value:", *resp.Parameter.Value)
+
 	return &resp, nil
 }
 
 func TestGetParameter(t *testing.T) {
-	thisTime := time.Now()
-	nowString := thisTime.Format("2006-01-02 15:04:05 Monday")
-	t.Log("Starting unit test at " + nowString)
 
 	// mock resource
-	name := "test-paramX"
+	name := "test-param"
 
 	mockSvc := &mockSSMClient{}
 
@@ -47,5 +46,5 @@ func TestGetParameter(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	t.Log("parameter value " + *results.Parameter.Value)
+	t.Log("parameter value is " + *results.Parameter.Value)
 }
